@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche par nom</title>
+
+</head>
+<body>
+
+    <label for="nomPage">Nom de la page :</label>
+    <input type="text" id="nomPage" placeholder="Entrez le nom de la page">
+
+    <button onclick="rechercherPage()">Rechercher</button>
+
+    <script>
+        function rechercherPage() {
+            // Récupérer la valeur de la zone de texte
+            var nomPage = document.getElementById("nomPage").value;
+
+            // Appeler la fonction de recherche avec le nom de la page
+            rechercherPageParNom(nomPage);
+        }
+
+        function rechercherPageParNom(nomPage) {
+            // Vérifier si le nom de la page est présent
+            if (nomPage.trim() === "") {
+                alert("Veuillez entrer le nom de la page.");
+                return;
+            }
+
+            // Construire l'URL en utilisant le nom de la page
+            var url = "http://127.0.0.1:5500/base/" + encodeURIComponent(nomPage) + ".html";
+
+            // Rediriger l'utilisateur vers l'URL construite
+            window.location.href = url;
+
+        }
+    </script>
+</body>
+</html>
